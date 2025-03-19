@@ -1,0 +1,2 @@
+bun run build
+pm2 start npm --name "scrap-app" -- start
