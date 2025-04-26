@@ -23,7 +23,7 @@ async function getBrowserInstance() {
                         executablePath: '/snap/bin/chromium',
                     }
                     : {
-                        headless: true,
+                        headless: false,
                     }
             );
         }
@@ -167,7 +167,7 @@ export async function POST(request: Request) {
                 const formattedDate = moment(date).format("YYYY-MM-DD");
 
                 await currentPage.goto(
-                    `https://visothap.hanjery.com/?ket_qua_xo_so=${formattedDate}`,
+                    `http://visothap.hanjery.com/?ket_qua_xo_so=${formattedDate}`,
                     { waitUntil: "networkidle0", timeout: 60000 }
                 );
 
@@ -188,7 +188,7 @@ export async function POST(request: Request) {
                                     if (rowIndex > 0) {
                                         const cells = resultRow.querySelectorAll(".js-table-cell");
                                         const rowCells =
-                                            cells[1]
+                                            cells[col]
                                                 ?.querySelector(".js-row")
                                                 ?.querySelectorAll(".js-col") ?? [];
                                         rowCells.forEach((cell) => {
